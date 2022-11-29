@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+    <style>
+        * {
+            text-align: center;
+            /* margin: auto; */
+        }
+
+        #main1 {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        #main2 {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        #main3 {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #main4 {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #main5 {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #main6 {
+            display: flex;
+            justify-content: center;
+        }
+
+        main {
+            margin: auto;
+            background-color: #0909b5;
+            width: 400px;
+        }
+
+        div {
+
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body style="background: grey;">
+    <h1>flex-start</h1>
+    <main id="main1">
+        <div style="background-color: red"></div>
+        <div style="background-color: yellow"></div>
+        <div style="background-color: green"></div>
+    </main>
+    <br>
+    <h1>flex-end</h1>
+    <main id="main2">
+        <div style="background-color: red"></div>
+        <div style="background-color: yellow"></div>
+        <div style="background-color: green"></div>
+    </main>
+    <br>
+    <h1>space-around</h1>
+    <main id="main3">
+        <div style="background-color: red"></div>
+        <div style="background-color: yellow"></div>
+        <div style="background-color: green"></div>
+    </main>
+    <br>
+    <h1>between</h1>
+    <main id="main4">
+        <div style="background-color: red"></div>
+        <div style="background-color: yellow"></div>
+        <div style="background-color: green"></div>
+    </main>
+    <br>
+    <h1>evenly</h1>
+    <main id="main5">
+        <div style="background-color: red"></div>
+        <div style="background-color: yellow"></div>
+        <div style="background-color: green"></div>
+    </main>
+    <br>
+    <h1>center</h1>
+    <main id="main6">
+        <div style="background-color: red"></div>
+        <div style="background-color: yellow"></div>
+        <div style="background-color: green"></div>
+    </main>
+    <!-- Parent -->
+    <br>
+    <h1>Align items</h1>
+    <article style="margin: auto; background: black; height: 300px; width: 400px; display: flex; justify-content: center; align-items: center;">
+        <div 
+        style="background-color: white;"></div>
+    </article>
+    <h1>Align items</h1>
+    <article style="margin: auto; background: black; height: 300px; width: 400px; display: flex; justify-content: flex-start; align-items: flex-start;">
+        <div 
+        style="background-color: white;"></div>
+    </article>
+    <h1>Align items</h1>
+    <article style="margin: auto; background: black; height: 300px; width: 400px; display: flex; justify-content: flex-end; align-items: flex-start;">
+        <div 
+        style="background-color: white;"></div>
+    </article>
+    <h1>Align items</h1>
+    <article style="margin: auto; background: black; height: 300px; width: 400px; display: flex; justify-content: flex-end; align-items: flex-end;">
+        <div 
+        style="background-color: white;"></div>
+    </article>
+    <!-- Children -->
+    
+</body>
+
+</html>
