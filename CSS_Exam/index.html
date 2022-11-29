@@ -8,12 +8,6 @@
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Doc</title>
     <style>
-        @media only screen and (orientation: orientation) {
-            /* ضع هنا الكود الذي تريد ان يظهر */
-        }
-
-        /* background:  linear-gradient(to right, black, red); */
-        /* <img src="spong.png" style="transform: scaleX(-1.0);" alt=""> */
         body {
             background-color: white;
         }
@@ -93,14 +87,17 @@
             animation: changeBackground 10s;
             animation-iteration-count: infinite;
         }
-        @keyframes changeBackground{
-            0%{
+
+        @keyframes changeBackground {
+            0% {
                 background-color: rgb(247, 139, 139);
             }
-            50%{
+
+            50% {
                 background-color: rgb(255, 255, 176);
             }
-            100%{
+
+            100% {
                 background-color: rgb(255, 106, 106);
             }
         }
@@ -228,6 +225,14 @@
                 width: 100%;
             }
 
+        }
+
+        @media only screen and (max-width:650px) {
+
+            main article div,
+            #gallary img {
+                width: 100%;
+            }
         }
     </style>
 </head>
