@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Live Radio</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" rel="stylesheet">
+    <style>
+        body{
+            background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);;
+        }
+        nav {
+            background-color: #1c8d89;
+        }
+
+        main {
+            width: 90%;
+            max-width: 700px;
+            margin: auto;
+            margin-top: 50px;
+            text-align: center;
+            height: 600px;
+        }
+
+        #logo {
+            width: 150px;
+            margin: 10px 0px;
+            padding-bottom: 15px;
+            padding-right: 20px;
+            padding-left: 20px;
+            border-bottom: #1c8d89 2px solid;
+        }
+
+        main h1 {
+            font-weight: bolder;
+        }
+
+        #div1 {
+            border-bottom: #1c8d89 2px solid;
+            width: 75%;
+            height: 50%;
+            margin: auto;
+        }
+        
+
+        #div2 img {
+            width: 10%;
+            cursor: pointer;
+            opacity: 50%;
+        }
+
+        #div2 img:hover {
+            opacity: 100%;
+        }
+
+        #div3 {
+            margin-top: 15px;
+        }
+
+        #div3 input {
+            width: 50%;
+            margin-bottom: 30px;
+        }
+
+        #color1, #color2, #color3, #color4 {
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            border: 0px;
+        }
+    </style>
+</head>
+
+<body style="" class="font-monospace">
+
+<nav class="navbar navbar-expand-sm navbar-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand" id="title">Live Radio</span>
+        <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.google.com" id="google">Google</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.youtube.com" id="youtube">Youtube</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main>
+    <div id="div1">
+        <img id="logo" src="../108-1080655_music-mentors-transparent-background-phone-logo-png.png" width="40%">
+        <h1 id="S_1name">Live Radio</h1>
+        <h2 id="S_2name">Live Radio</h2>
+    </div>
+    <br>
+    <div id="div2">
+        <audio id="music"></audio>
+        <a><img id="back" onclick="back()" src="../back.png"></a>
+        <a><img id="play" onclick="determine()" src="../play.png"></a>
+        <a><img id="next" onclick="next()" src="../next.png"></a>
+        <div id="div3">
+            <h2>Audio</h2>
+            <input id="audioRange" type="range">
+            <h2>Speed</h2>
+            <input id="speedRange" max="200" min="0" type="range">
+            <br>
+            <button onclick="backGroundColor('white')" id="color1"></button>
+            <button onclick="backGroundColor('linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c)')" style="background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);" id="color2"></button>
+            <button onclick="backGroundColor('linear-gradient(0.25turn, #74bbdb, #fdf262, #6a227c)')" style="background: linear-gradient(0.25turn, #74bbdb, #fdf262, #6a227c);" id="color3"></button>
+        </div>
+    </div>
+
+</main>
+
+<script>
+
+    var music = document.getElementById("music");
+    var S_2name = document.getElementById("S_2name");
+
+    var isPlayed = true;
+    var songs_names = ["Molchat Doma - Sudno", "Pastel Ghost - Drak Beach", "Pink Floyd - The Great Gig In The Sky "];
+    var songs_files = ["molchat doma - sudno __ slowed + reverb.mp3", "PASTEL GHOST _ DARK BEACH.mp3", "Pink Floyd - The Great Gig In The Sky (PULSE Restored & Re-Edited).mp3"];
+
+    var audioRange = document.getElementById("audioRange");
+    var speedRange = document.getElementById("speedRange");
+
+    var counter = 0;
+
+    function backGroundColor(text){
+        localStorage.setItem("color",text);
+        document.body.style.background = text;
+    }
+
+    function determine() {
+        if (isPlayed) {
+            playS()
+            isPlayed = false;
+            document.getElementById("play").src = "pause.png";
+        } else {
+            pause()
+            isPlayed = true;
+            document.getElementById("play").src = "play.png";
+        }
+    }
+
+    function next() {
+        if (counter >= 0 && counter < 2) {
+            counter++;
+            localStorage.setItem("counter", counter);
+            music.src = songs_files[counter];
+            S_2name.innerText = songs_names[counter];
+            playS()
+        }
+    }
+
+    function back() {
+        if (counter > 0 && counter <= 2) {
+            counter--;
+            localStorage.setItem("counter", counter);
+            music.src = songs_files[counter];
+            S_2name.innerText = songs_names[counter];
+            playS()
+        }
+    }
+
+    function playS() {
+        music.src = songs_files[counter];
+        S_2name.innerText = songs_names[counter];
+        music.play();
+    }
+
+    function pause() {
+        music.pause();
+    }
+
+    function volumeChane() {
+        music.volume = audioRange.value / 100;
+    }
+
+    audioRange.onchange = volumeChane;
+
+    function speedChange() {
+        music.playbackRate = speedRange.value / 100;
+    }
+
+    speedRange.onchange = () => {
+        speedChange()
+    };
+
+    onload = () => {
+        if (localStorage.getItem("counter") != null) {
+            counter = localStorage.getItem("counter")
+        }
+        if (localStorage.getItem("color") != null) {
+            document.body.style.background = localStorage.getItem("color")
+        }
+        music.volume = 50 / 100;
+        music.playbackRate = 1;
+        playS()
+    }
+
+
+</script>
+
+<script crossorigin="anonymous"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
